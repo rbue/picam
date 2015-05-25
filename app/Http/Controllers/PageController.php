@@ -1,4 +1,5 @@
 <?php namespace PiCam\Http\Controllers;
+use PiCam\Stream;
 
 /**
  * This controller handles the display of all "normal" content pages.
@@ -54,6 +55,13 @@ class PageController extends Controller {
    */
   public function getAbout() {
     return view('pages/about');
+  }
+
+  /**
+   * Test method: just for testing
+   */
+  public function getTest() {
+    dd(Stream::all());
   }
 
 }

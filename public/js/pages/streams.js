@@ -1,11 +1,59 @@
 $(document).ready(function() {
+    // Initialize dataTable
+    $('#streamList').dataTable({
+        "ajax": {
+            "url": "./streams/res"
+        },
+        "columns": [
+            { "data": "id" },
+            { "data": "title" },
+            { "data": "ip" },
+            {
+                "data": null,
+                "defaultContent": '<button type="button" class="btn btn-danger deleteStream"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
+                "searchable": false,
+                "orderable": false
+            }
+        ],
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.7/i18n/German.json"
+        }
+    }).on( 'init.dt', function () {
+        // Deletion handler/listener
+        $('.deleteStream').click(function() {
+            var tr = $(this).parent().parent();
+            var id = tr.children().first().html();
+            console.log('Delete: ' + id);
+        });
+    });
+
     // Modal submit listener
     $('#btn_addStream').click(function() {
         var res = validateForm();
 
-        // save the streamEntry if the validation was successfull
+        // save the streamEntry if the validation was successful
         if(res === true) {
-            // todo
+            JSON.stringify($('#frm_addStream').serialize())
+            $.ajax({
+                method: "post",
+                url: "./streams/save",
+                data: $('#frm_addStream').serialize(),
+                success: function(data) {
+                    if(data.status == "success") {
+                        // request was successful -> reset form, close modal and show a message (plus reload dataTable source)
+                        $('#frm_addStream').trigger("reset");
+                        $('#addStream').modal('hide');
+                        $('#streamList').DataTable().ajax.reload();
+                        $.notify("Speichern erfolgreich!", "success");
+                    } else {
+                        $.notify("Beim Speicher ist ein Fehler aufgetreten!", "error");
+                    }
+                },
+                error: function() {
+                    $.notify("Beim Speicher ist ein Fehler aufgetreten!", "error");
+                }
+
+            });
         }
     });
 });

@@ -15,4 +15,5 @@
 Route::get('/', 'PageController@getHome');
 Route::get('/dashboard', 'CamController@index');
 Route::get('/streams', 'StreamController@index');
+Route::controller('/streams', 'StreamController');
 Route::controller('/', 'PageController');

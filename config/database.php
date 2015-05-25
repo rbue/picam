@@ -46,11 +46,11 @@ return [
 
 	'connections' => [
 
-		'sqlite' => [
+		/*'sqlite' => [
 			'driver'   => 'sqlite',
 			'database' => storage_path().'/database.sqlite',
 			'prefix'   => '',
-		],
+		],*/
 
 		'mysql' => [
 			'driver'    => 'mysql',
@@ -64,7 +64,7 @@ return [
 			'strict'    => false,
 		],
 
-		'pgsql' => [
+		/*'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),
 			'database' => env('DB_DATABASE', 'forge'),
@@ -82,7 +82,7 @@ return [
 			'username' => env('DB_USERNAME', 'forge'),
 			'password' => env('DB_PASSWORD', ''),
 			'prefix'   => '',
-		],
+		],*/
 
 	],
 

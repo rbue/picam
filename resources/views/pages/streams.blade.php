@@ -10,6 +10,20 @@
                     <div class="btn-group" role="group" aria-label="...">
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addStream"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Hinzufügen</button>
                     </div>
+                    <hr />
+                    <p class="lead">Streams</p>
+                    <table class="table table-striped table-bordered dataTable" id="streamList">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titel</th>
+                                <th>IP-Adresse</th>
+                                <th>Aktionen</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot></tfoot>
+                    </table>
 				</div>
 			</div>
 		</div>
@@ -28,11 +42,11 @@
                 <form id="frm_addStream">
                     <div class="form-group">
                         <label for="title">Titel</label>
-                        <input type="text" class="form-control" id="title" placeholder="Titel/Bezeichnung">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Titel/Bezeichnung">
                     </div>
                     <div class="form-group">
                         <label for="ip">IP-Adresse</label>
-                        <input type="text" class="form-control" id="ip" placeholder="IP-Adresse">
+                        <input type="text" class="form-control" id="ip" name="ip" placeholder="IP-Adresse">
                     </div>
                 </form>
             </div>
@@ -50,6 +64,7 @@
 {{-- Additional assets for this view --}}
 @section('add_assets')
 <script src="{{ asset('/js/libs/jquery.dataTables.min.js') }}"></script>
-<link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+<script src="{{ asset('/js/libs/dataTables.bootstrap.min.js') }}"></script>
+<link href="{{ asset('/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 <script src="{{ asset('/js/pages/streams.js') }}"></script>
 @endsection
