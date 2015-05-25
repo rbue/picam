@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace PiCam\Services;
 
-use App\User;
+use PiCam\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: PiCam
+        psr4_prefix: PiCam
         src_path: app

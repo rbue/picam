@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace PiCam\Events;
 
 abstract class Event {
 

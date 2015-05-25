@@ -30,7 +30,7 @@ return [
 	],
 
 	'stripe' => [
-		'model'  => 'App\User',
+		'model'  => 'PiCam\User',
 		'key' => '',
 		'secret' => '',
 	],
