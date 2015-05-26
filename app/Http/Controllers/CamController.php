@@ -1,6 +1,7 @@
 <?php namespace PiCam\Http\Controllers;
 
 use PiCam\Http\Requests;
+use PiCam\Status;
 
 /**
  * This Controller handles all actions related to the raspberry pi camera.
@@ -12,7 +13,11 @@ use PiCam\Http\Requests;
 class CamController extends Controller {
 
 	public function index() {
-    return view('pages/dashboard');
+
+    // fetch the current operation mode
+    $status = Status::orderby('id', 'desc')->first();
+
+    return view('pages/dashboard', $status);
   }
 
 }

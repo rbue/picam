@@ -10,7 +10,7 @@ $(document).ready(function() {
             { "data": "ip" },
             {
                 "data": null,
-                "defaultContent": '<button type="button" class="btn btn-danger deleteStream"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
+                "defaultContent": '<button type="button" class="btn btn-default watchStream" data-toggle="tooltip" data-placement="top" title="Stream anschauen"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button> ' + '<button type="button" class="btn btn-danger deleteStream" data-toggle="tooltip" data-placement="top" title="Stream löschen"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                 "searchable": false,
                 "orderable": false
             }
@@ -19,11 +19,14 @@ $(document).ready(function() {
             url: "//cdn.datatables.net/plug-ins/1.10.7/i18n/German.json"
         }
     }).on( 'init.dt', function () {
+        // Init tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+
         // Deletion handler/listener
         $('.deleteStream').click(function() {
             var tr = $(this).parent().parent();
             var id = tr.children().first().html();
-            console.log('Delete: ' + id);
+            //delete
         });
     });
 

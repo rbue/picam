@@ -52,11 +52,11 @@
 
 	@yield('content')
 
-    <div class="footer">
+    {{--<div class="footer">
         <div class="container">
             <p class="content">PiCam created by <a href="mailto:robinbuerkli@bluewin.ch">Robin Bürkli</a> - Modul 152</p>
         </div>
-    </div>
+    </div>--}}
 
 	<!-- Scripts -->
 	<script src="{{ asset('/js/libs/jquery-1.11.3.min.js') }}"></script>

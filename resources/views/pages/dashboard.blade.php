@@ -8,9 +8,9 @@
 				<div class="panel-heading">Betriebsmodi</div>
 				<div class="panel-body">
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default active"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Ausschalten</button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Streaming</button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Überwachung</button>
+                        <button type="button" class="btn btn-default @if ($status == "OFF")active @endif"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Ausgeschalten</button>
+                        <button type="button" class="btn btn-default @if ($status == "STREAM")active @endif"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Streaming</button>
+                        <button type="button" class="btn btn-default @if ($status == "SURVEILLANCE")active @endif"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Überwachung</button>
                     </div>
 				</div>
 			</div>
