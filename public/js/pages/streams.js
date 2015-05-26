@@ -26,7 +26,10 @@ $(document).ready(function() {
         $('.deleteStream').click(function() {
             var tr = $(this).parent().parent();
             var id = tr.children().first().html();
-            //delete
+
+            // show deletion modal
+            $('#deleteStream').modal('show');
+            $('#frm_deleteStream #deleteId').val(id); // store the "target's" id in a hidden field
         });
     });
 
@@ -88,4 +91,8 @@ function validateForm() {
     } else {
         return true;
     }
+}
+
+function deleteStream() {
+
 }
