@@ -10,15 +10,15 @@ $(document).ready(function() {
             { "data": "ip" },
             {
                 "data": null,
-                "defaultContent": '<button type="button" class="btn btn-default watchStream" data-toggle="tooltip" data-placement="top" title="Stream anschauen"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button> ' + '<button type="button" class="btn btn-danger deleteStream" data-toggle="tooltip" data-placement="top" title="Stream löschen"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
+                "defaultContent": '<button type="button" class="btn btn-default showStream" data-toggle="tooltip" data-placement="top" title="Stream anschauen"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button> ' + '<button type="button" class="btn btn-danger deleteStream" data-toggle="tooltip" data-placement="top" title="Stream löschen"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                 "searchable": false,
                 "orderable": false
             }
         ],
         language: {
-            url: "//cdn.datatables.net/plug-ins/1.10.7/i18n/German.json"
+            url: "//cdn.datatables.net/plug-ins/1.10.7/i18n/German.json" //todo: replace with an internal solution
         }
-    }).on( 'init.dt', function () {
+    }).on( 'init.dt draw.dt', function () { // on init and redraw
         // Init tooltips
         $('[data-toggle="tooltip"]').tooltip();
 
@@ -31,9 +31,15 @@ $(document).ready(function() {
             $('#deleteStream').modal('show');
             $('#frm_deleteStream #deleteId').val(id); // store the "target's" id in a hidden field
         });
+
+        // Handler/Listener to show a stream
+        $('.showStream').click(function() {
+            //todo: show a brief info or a player
+            $('#showStream').modal('show');
+        });
     });
 
-    // Modal submit listener
+    // Add a stream (Modal submit listener)
     $('#btn_addStream').click(function() {
         var res = validateForm();
 
@@ -50,17 +56,41 @@ $(document).ready(function() {
                         $('#frm_addStream').trigger("reset");
                         $('#addStream').modal('hide');
                         $('#streamList').DataTable().ajax.reload();
-                        $.notify("Speichern erfolgreich!", "success");
+                        $.notify("Erfolgreich gespeichert!", "success");
                     } else {
-                        $.notify("Beim Speicher ist ein Fehler aufgetreten!", "error");
+                        $.notify("Beim Speichern ist ein Fehler aufgetreten!", "error");
                     }
                 },
                 error: function() {
-                    $.notify("Beim Speicher ist ein Fehler aufgetreten!", "error");
+                    $.notify("Beim Speichern ist ein Fehler aufgetreten!", "error");
                 }
-
             });
         }
+    });
+
+    // Remove a stream (Modal submit listener)
+    $('#btn_deleteStream').click(function() {
+        var deleteId = $('#frm_deleteStream #deleteId').val();
+        $.ajax({
+            method: "post",
+            url: "./streams/delete",
+            data: {deleteId: deleteId},
+            success: function(data) {
+                if(data.status == "success") {
+                    // request was successful -> reset form, close modal and show a message (plus reload dataTable source)
+                    $('#frm_deleteStream').trigger("reset");
+                    $('#deleteStream').modal('hide');
+                    $('#streamList').DataTable().ajax.reload();
+                    $.notify("Erfolgreich gelöscht!", "success");
+                } else {
+                    $.notify("Beim Löschen des Streams ist ein Fehler aufgetreten!", "error");
+                }
+            },
+            error: function() {
+                $.notify("Beim Löschen des Streams ist ein Fehler aufgetreten!", "error");
+            }
+
+        });
     });
 });
 
@@ -91,8 +121,4 @@ function validateForm() {
     } else {
         return true;
     }
-}
-
-function deleteStream() {
-
 }

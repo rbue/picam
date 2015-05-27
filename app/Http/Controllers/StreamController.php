@@ -46,4 +46,19 @@ class StreamController extends Controller {
     return Response::json($output);
   }
 
+  public function postDelete() {
+    $input = Request::all();
+    $output = array();
+
+    $res = Stream::destroy($input['deleteId']);
+
+    if($res > 0) {
+      $output['status'] = 'success';
+    } else {
+      $output['status'] = 'error';
+    }
+
+    return Response::json($output);
+  }
+
 }
