@@ -1,0 +1,1 @@
+<p>Die PiCam ist momentan ausgeschaltet.</p>

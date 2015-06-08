@@ -18,6 +18,7 @@
                                 <li><a href="https://jquery.com/" target="_blank">jQuery</a></li>
                                 <li><a href="http://datatables.net/" target="_blank">jQuery DataTables</a></li>
                                 <li><a href="http://notifyjs.com/" target="_blank">NotifyJs</a></li>
+                                <li><a href="http://malsup.com/jquery/block/" target="_blank">jQuery BlockUI</a></li>
                             </ul>
 
                         </p>

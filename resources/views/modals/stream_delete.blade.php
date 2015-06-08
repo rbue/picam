@@ -14,7 +14,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
-                <button type="button" class="btn btn-primary" id="btn_deleteStream">Löschen</button>
+                <button type="button" class="btn btn-danger" id="btn_deleteStream">Löschen</button>
             </div>
         </div>
     </div>

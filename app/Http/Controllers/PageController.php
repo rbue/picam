@@ -1,4 +1,5 @@
 <?php namespace PiCam\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
 use PiCam\Stream;
 
 /**
@@ -40,7 +41,7 @@ class PageController extends Controller {
   }
 
   /**
-   * Show the internal archive (recordings.
+   * Show the internal archive (recordings).
    *
    * @return \Illuminate\View\View
    */

@@ -9,9 +9,10 @@ Following a short list of libraries and frameworks that I used inside the projec
 - jQuery 1.11
 - jQuery DataTables
 - NotifyJS
+- JQuery BlockUI
 
 ## Notes
-Please note that Picam is a school project at ICT module 152, so it was built for a educational purpose and can't be used for any "stalking activities" ;).
+Please note that Picam is a school project at ICT module 152, so it was built for an educational purpose and can't be used for any "stalking activities" ;).
 
 ## License
 Released under the mit license.

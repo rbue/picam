@@ -44,5 +44,6 @@
     <script src="{{ asset('/js/libs/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/js/libs/dataTables.bootstrap.min.js') }}"></script>
     <link href="{{ asset('/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/classes/streaming.js') }}"></script>
     <script src="{{ asset('/js/pages/streams.js') }}"></script>
 @endsection
