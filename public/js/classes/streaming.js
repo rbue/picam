@@ -131,7 +131,9 @@ Streaming.prototype.deleteStream = function() {
  */
 Streaming.prototype.showStreamModal = function(e) {
     var ip = $(e.currentTarget).parent().parent().find('.ip').text().trim();
-    $('#showStream #vlc').attr('target', 'http://' + ip + ':8554');
+    // clear inner html of the modal and create a new vlc embedded object
+    $('#showStream #player_wrapper').empty();
+    $('#showStream #player_wrapper').html('<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" id="vlc" loop="yes" autoplay="yes" target="http://' + ip + ':8554"></embed>');
     $('#showStream').modal('show');
 };
 

@@ -1,1 +1,1 @@
-<p>ToDo</p>
+<p>Die Kamera befindet sich momentan in Überwachungszustand. Sobald die Kamera eine Aktivität aufzeichnet, finden Sie diese unter dem Menüpunkt "Archiv".</p>

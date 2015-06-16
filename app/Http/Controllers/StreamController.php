@@ -15,10 +15,18 @@ use PiCam\Stream;
  */
 class StreamController extends Controller {
 
+  /**
+   * This function renders the streaming index page
+   * @return \Illuminate\View\View default home
+   */
   public function index() {
     return view('pages/streams');
   }
 
+  /**
+   * This functions fetches all remote streams from the database and pass them as json-string.
+   * @return Response json-string with all remote streams
+   */
   public function getRes() {
     // prepare output
     $output = array();
@@ -27,6 +35,10 @@ class StreamController extends Controller {
     return Response::json($output);
   }
 
+  /**
+   * This functions saves the new stream.
+   * @return Response json-string, which indicates if the operation was successful or not
+   */
   public function postSave() {
     $input = Request::all();
     $output = array();
@@ -46,6 +58,10 @@ class StreamController extends Controller {
     return Response::json($output);
   }
 
+  /**
+   * This function deletes a stream.
+   * @return Response json-string, which indicates if the operation was successful or not
+   */
   public function postDelete() {
     $input = Request::all();
     $output = array();
@@ -60,5 +76,4 @@ class StreamController extends Controller {
 
     return Response::json($output);
   }
-
 }

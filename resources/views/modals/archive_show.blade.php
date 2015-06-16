@@ -7,7 +7,9 @@
                 <h4 class="modal-title" id="showRecordingLabel">Aufzeichnung ansehen</h4>
             </div>
             <div class="modal-body">
-                <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2"  width="100%"  height="100%" id="vlc" loop="yes" autoplay="yes" target=""></embed>
+                <div id="record_wrapper">
+                    <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" id="vlc" loop="yes" autoplay="yes" target=""></embed>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>

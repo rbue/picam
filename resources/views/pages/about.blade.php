@@ -6,7 +6,6 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Über diese Applikation</div>
-
                     <div class="panel-body">
                         <h1>Autor</h1>
                         <p>Erstellt von <a href="mailto:robinbuerkli@bluewin.ch">Robin Bürkli</a> im Rahmen des Modul 152 der Gewerblich-industriellen Berufsfachschule Muttenz.</p>

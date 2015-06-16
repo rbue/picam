@@ -6,7 +6,6 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Archiv</div>
-
                     <div class="panel-body">
                         <p>Nachfolgend sehen Sie eine Liste mit den bisher aufgezeichneten Aufnahmen der Überwachungskamera bzw. dem Überwachungsmodus.</p>
                         <hr />
@@ -14,7 +13,7 @@
                             <thead>
                             <tr>
                                 <th>Dateiname</th>
-                                <th>Erstellungsdatum</th>
+                                <th>Aufnahmezeitpunkt</th>
                                 <th>Aktionen</th>
                             </tr>
                             </thead>
@@ -26,6 +25,10 @@
             </div>
         </div>
     </div>
+
+    {{-- Include modals --}}
+    @include('modals.archive_show')
+
 @endsection
 
 @section('title', 'Archiv')

@@ -12,16 +12,6 @@ use PiCam\Stream;
 class PageController extends Controller {
 
 	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		//$this->middleware('auth');
-	}
-
-	/**
 	 * Show the home page of the application.
 	 *
 	 * @return \Illuminate\View\View
@@ -57,12 +47,4 @@ class PageController extends Controller {
   public function getAbout() {
     return view('pages/about');
   }
-
-  /**
-   * Test method: just for testing
-   */
-  public function getTest() {
-    dd(Stream::all());
-  }
-
 }

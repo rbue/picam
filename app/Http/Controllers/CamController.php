@@ -14,14 +14,21 @@ use PiCam\Status;
  */
 class CamController extends Controller {
 
+  /**
+   * Default action which shows the current operation mode
+   * @return \Illuminate\View\View Index view
+   */
 	public function index() {
-
     // fetch the current operation mode
     $status = Status::orderby('id', 'desc')->first();
 
     return view('pages/dashboard', $status);
   }
 
+  /**
+   * This function fetches the data
+   * @return Response json-string which indicates if the operation was successful or not
+   */
   public function postChange() {
     $input = Request::all();
 
@@ -40,21 +47,19 @@ class CamController extends Controller {
       $output['status'] = 'success';
 
       // do action in the shell, if we're in a productive environment
-      if(env('APP_DEBUG') == false) {
         switch($mode) {
           case 'OFF':
-            exec('sh ../scripts/resetCam.sh');
+            echo exec('sh /var/www/picam/scripts/resetCam.sh');
             break;
           case 'STREAM':
-            exec('sh ../scripts/resetCam.sh');
-            exec('sh ../scripts/startStream.sh > /dev/null&');
+            echo exec('sh /var/www/picam/scripts/resetCam.sh');
+            echo exec('sh /var/www/picam/scripts/startStream.sh > /dev/null&');
             break;
           case 'SURVEILLANCE':
-            exec('sh ../scripts/resetCam.sh');
-            exec('sh ../scripts/startMotion.sh > /dev/null&');
+            echo exec('sh /var/www/picam/scripts/resetCam.sh');
+            echo exec('sh /var/www/picam/scripts/startMotion.sh > /dev/null&');
             break;
         }
-      }
     } else {
       $output['status'] = 'error';
     }
@@ -62,12 +67,17 @@ class CamController extends Controller {
     return Response::json($output);
   }
 
+  /**
+   * This function renders the correct dashboard-view for the given mode.
+   * @return \Illuminate\View\View rendered view
+   */
   public function postView() {
     $input = Request::all();
 
     // fetch mode
     $mode = strtoupper($input['mode']);
 
+    // detect wanted mode and render the correct view
     switch($mode) {
       case 'OFF':
         return view('parts.dashboard_off');
@@ -81,6 +91,10 @@ class CamController extends Controller {
     }
   }
 
+  /**
+   * This function iterates over the vids-directory in the laravel storage and preprocess it.
+   * @return Response json-string which  contains all needed data (name and create_date for every file)
+   */
   public function getArchive() {
     $files = Storage::files('vids');
 
