@@ -41,6 +41,8 @@
 
 {{-- Additional assets for this view --}}
 @section('add_assets')
+    <link rel="stylesheet" href="//releases.flowplayer.org/6.0.1/skin/minimalist.css">
+    <script src="//releases.flowplayer.org/6.0.1/flowplayer.min.js"></script>
     <script src="{{ asset('/js/libs/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/js/libs/dataTables.bootstrap.min.js') }}"></script>
     <link href="{{ asset('/css/dataTables.bootstrap.css') }}" rel="stylesheet">

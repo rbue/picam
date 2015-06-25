@@ -18,6 +18,11 @@ function Dashboard() {
     $('button').click({d: this}, this.changeMode);
 };
 
+/**
+ * This function handles the modechange functionality.
+ *
+ * @param d Dashboard var
+ */
 Dashboard.prototype.changeMode = function(d) {
     // do some frontend stuff
     $('button').removeClass('active');
@@ -33,7 +38,12 @@ Dashboard.prototype.changeMode = function(d) {
     self.getModeView(mode);
 
     // block ui
-    $.blockUI({message: null});
+    if(mode === 'stream') {
+        $.blockUI({message: 'Biite waren Sie, bis der Stream gestartet ist (~10 Sekunden)'});
+    } else {
+        $.blockUI({message: null});
+    }
+
 
     // call via ajax to start the behaviour
     $.ajax({
@@ -46,7 +56,15 @@ Dashboard.prototype.changeMode = function(d) {
             } else {
                 $.notify("Beim Wechseln des Modus ist ein Fehler aufgetreten!", "error");
             }
-            $.unblockUI();
+            if(mode == 'stream') {
+                setTimeout(function() {
+                    $.unblockUI(); // unblock after x(10) secs, so that we're sure that the stream started successfully
+                    location.reload();
+                }, 10000);
+            } else {
+                $.unblockUI(); // unblock instant
+            }
+
         },
         error: function() {
             $.notify("Beim Wechseln des Modus ist ein Fehler aufgetreten!", "error");
@@ -55,13 +73,18 @@ Dashboard.prototype.changeMode = function(d) {
     });
 };
 
+/**
+ * This function fetches the inner content (html view) for the target mode.
+ *
+ * @param mode target mode
+ */
 Dashboard.prototype.getModeView = function(mode) {
     $.ajax({
         method: "post",
         url: "./dashboard/view",
         data: {mode : mode},
         success: function(data) {
-            // set response as inner htnl of panel content
+            // set response as inner html of panel content
             $('#panel-content').html(data);
         }
     });

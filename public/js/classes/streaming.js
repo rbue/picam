@@ -23,7 +23,8 @@ function Streaming() {
 };
 
 /**
- * Initialize the datatable and it's event functions
+ * [function description]
+ * @return {[type]} [description]
  */
 Streaming.prototype.initTable = function() {
     $('#streamList').dataTable({
@@ -32,7 +33,7 @@ Streaming.prototype.initTable = function() {
         },
         "columns": [
             { "data": "id" },
-            { "data": "title" },
+            { "data": "title", className: "title" },
             { "data": "ip", className: "ip" },
             {
                 "data": null,
@@ -130,11 +131,15 @@ Streaming.prototype.deleteStream = function() {
  * Show the streaming modal on the registered event
  */
 Streaming.prototype.showStreamModal = function(e) {
+    // get required vars
     var ip = $(e.currentTarget).parent().parent().find('.ip').text().trim();
+    var title = $(e.currentTarget).parent().parent().find('.title').text().trim();
     // clear inner html of the modal and create a new vlc embedded object
     $('#showStream #player_wrapper').empty();
-    $('#showStream #player_wrapper').html('<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" id="vlc" loop="yes" autoplay="yes" target="http://' + ip + ':8554"></embed>');
+    $('#showStream #player_wrapper').html('<embed id="vlc" target="http://' + ip + ':8554" autoplay="yes" loop="yes" version="VideoLAN.VLCPlugin.2" pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" width="100%" height="420">');
+    // show modal and edit title
     $('#showStream').modal('show');
+    $('#showStreamLabel').text('Stream anzeigen (' + title + ')');
 };
 
 /**

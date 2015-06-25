@@ -13,7 +13,7 @@
                             <thead>
                             <tr>
                                 <th>Dateiname</th>
-                                <th>Aufnahmezeitpunkt</th>
+                                {{-- <th>Aufnahmezeitpunkt</th> --}}
                                 <th>Aktionen</th>
                             </tr>
                             </thead>

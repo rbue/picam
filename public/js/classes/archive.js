@@ -28,7 +28,6 @@ Archive.prototype.initTable = function() {
         },
         "columns": [
             { "data": "name", className: "fileName" },
-            { "data": "date" },
             {
                 "data": null,
                 "defaultContent": '<button type="button" class="btn btn-default showRecord" data-toggle="tooltip" data-placement="top" title="Aufzeichnung ansehen"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>',
@@ -39,7 +38,7 @@ Archive.prototype.initTable = function() {
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.7/i18n/German.json"
         },
-        "order": [[ 1, "desc" ]] // default sorting (recent recordings first)
+        "order": [[ 0, "desc" ]] // default sorting (recent recordings first)
     }).on( 'init.dt draw.dt', function () { // on init and redraw
         // Init tooltips
         $('[data-toggle="tooltip"]').tooltip();
@@ -57,6 +56,7 @@ Archive.prototype.showRecordModal = function(e) {
     // clear inner html of the modal and create a new vlc embedded object
     console.log(fileName);
     $('#showRecording #record_wrapper').empty();
-    $('#showRecording #record_wrapper').html('<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" id="vlc" loop="yes" autoplay="yes" target="../vids/' + fileName + '"></embed>');
+    $('#showRecording #record_wrapper').html('<embed id="vlc" target="./videos/' + fileName + '" autoplay="yes" loop="yes" version="VideoLAN.VLCPlugin.2" pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" width="100%" height="420">');
+    /*$('#showRecording #record_wrapper').html('<embed id="vlc" target="http://link.ac/4Twe10" autoplay="yes" loop="yes" version="VideoLAN.VLCPlugin.2" pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" width="100%" height="420">');*/
     $('#showRecording').modal('show');
 };

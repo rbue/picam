@@ -12,6 +12,8 @@
                             <button type="button" id="btn_stream" class="btn btn-default @if($status == "STREAM")active @endif" @if($status == "STREAM")disabled="disabled" @endif><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Streaming</button>
                             <button type="button" id="btn_surveillance" class="btn btn-default @if($status == "SURVEILLANCE")active @endif" @if($status == "SURVEILLANCE")disabled="disabled" @endif><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Überwachung</button>
                         </div>
+                        <br /><br />
+                        <p><b>Hinweis:</b> Bitte vor einem Moduswechsel immer zuerst abschalten!</p>
                     </div>
                 </div>
                 <div class="panel panel-default">
